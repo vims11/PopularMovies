@@ -1,0 +1,33 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MoviesFragment"
+    tools:showIn="@layout/activity_main"
+    android:background="@color/blackColor">
+
+    <GridView
+        android:id="@+id/gridview_movies"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawSelectorOnTop="true"
+        android:gravity="center"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="@dimen/dp_10"
+        android:focusable="true"
+        android:clickable="true">
+    </GridView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loading ....."
+        android:id="@+id/load_textView"
+        android:layout_gravity="center"
+        android:layout_marginBottom="50dp"
+        android:textColor="@color/textWhite"
+        android:textSize="@dimen/text_20"
+        android:textStyle="bold" />
+
+</FrameLayout>
