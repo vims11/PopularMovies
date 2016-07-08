@@ -1,0 +1,7 @@
+<ImageView android:id="@+id/grid_movie_image"
+    android:layout_width="110dp"
+    android:layout_height="140dp"
+    android:scaleType="fitXY"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+   </ImageView>
+
