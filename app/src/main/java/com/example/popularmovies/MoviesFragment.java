@@ -36,7 +36,7 @@ public class MoviesFragment extends Fragment {
     private GridView gridView;
     private GridViewMovieAdapter gridImageAdapter;
     private TextView loadTextView;
-    private String STRING_QUERY="popular";
+    private String STRING_QUERY;
     static final String STATE_STRING = "stringUser";
 
     private ArrayList<MovieItem> movieGridData;
@@ -80,9 +80,6 @@ public class MoviesFragment extends Fragment {
             STRING_QUERY = savedInstanceState.getString(STATE_STRING);
         }
 
-//        else
-
-
 
         gridView = (GridView) rootView.findViewById(R.id.gridview_movies);
 
@@ -107,6 +104,7 @@ public class MoviesFragment extends Fragment {
                 intent.putExtra("rating",mItem.getMovieVote_average());
                 intent.putExtra("overview",mItem.getMovieOverview());
                 intent.putExtra("image", mItem.getMoviePoster());
+          //      intent.putExtra("STRING_QUERY",STRING_QUERY);
 
                 startActivity(intent);
 
