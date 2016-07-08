@@ -6,11 +6,10 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 /**
  * Created by vims1 on 7/7/2016.
+ *
+ * TabedClass class is the tab used the Main Activity to show the uer Now playing , Pouplar and Top Rated movies
  */
-public class Pager extends FragmentStatePagerAdapter {
-
-
-
+public class TabedClass extends FragmentStatePagerAdapter {
     int tabCount;
 
     MoviesFragment mf1;
@@ -18,7 +17,7 @@ public class Pager extends FragmentStatePagerAdapter {
     MoviesFragment mf3;
 
 
-    public Pager(FragmentManager fm,int tabCount) {
+    public TabedClass(FragmentManager fm, int tabCount) {
         super(fm);
         this.tabCount=tabCount;
 

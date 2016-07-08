@@ -98,13 +98,14 @@ public class MoviesFragment extends Fragment {
 
                 MovieItem mItem = (MovieItem) parent.getItemAtPosition(position);
 
+                //Create Intent and pass the value (detail of the movie) to DetailActivity class
+
                 Intent intent = new Intent(getActivity(), DetailActivity.class);
                 intent.putExtra( "title", mItem.getMovieTitle());
                 intent.putExtra("releaseDate",mItem.getMovieRelease_Date());
                 intent.putExtra("rating",mItem.getMovieVote_average());
                 intent.putExtra("overview",mItem.getMovieOverview());
                 intent.putExtra("image", mItem.getMoviePoster());
-          //      intent.putExtra("STRING_QUERY",STRING_QUERY);
 
                 startActivity(intent);
 

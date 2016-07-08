@@ -16,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
         NOW_PLAYING, POPULAR, TOP_RATED
     }
 
-   // private HashMap<TabType, Stack<String>> backStacks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager= (ViewPager)findViewById(R.id.pager);
-        final Pager pagerAdapter = new Pager(getSupportFragmentManager(), tabLayout.getTabCount());
+        final TabedClass tabAdapter = new TabedClass(getSupportFragmentManager(), tabLayout.getTabCount());
 
-       viewPager.setAdapter(pagerAdapter);
+       viewPager.setAdapter(tabAdapter);
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

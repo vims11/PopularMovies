@@ -14,10 +14,11 @@ public class DetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+
+    //To go back to the main Activity with the old selected Tab
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
