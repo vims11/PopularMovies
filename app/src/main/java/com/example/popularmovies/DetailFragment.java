@@ -28,7 +28,10 @@ public class DetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView= inflater.inflate(R.layout.fragment_detail, container, false);
 
+
         Intent intent = getActivity().getIntent();
+        getActivity().setTitle(intent.getStringExtra("title"));
+
         fillValueText(rootView,intent,"title",R.id.title_Text);
         fillValueText(rootView,intent,"releaseDate",R.id.release_text);
         fillValueText(rootView,intent,"overview",R.id.overview_Text);
