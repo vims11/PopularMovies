@@ -19,15 +19,11 @@
         android:clickable="true">
     </GridView>
 
-    <TextView
+    <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Loading ....."
-        android:id="@+id/load_textView"
-        android:layout_gravity="center"
-        android:layout_marginBottom="50dp"
-        android:textColor="@color/textWhite"
-        android:textSize="@dimen/text_20"
-        android:textStyle="bold" />
+        android:id="@+id/progressBar"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
 
 </FrameLayout>

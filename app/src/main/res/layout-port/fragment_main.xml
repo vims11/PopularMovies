@@ -6,8 +6,6 @@
     tools:showIn="@layout/activity_main"
     android:background="@color/blackColor">
 
-
-
     <GridView
         android:id="@+id/gridview_movies"
         android:layout_width="fill_parent"

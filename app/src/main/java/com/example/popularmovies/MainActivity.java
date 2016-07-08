@@ -1,21 +1,12 @@
 package com.example.popularmovies;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
-
-    enum TabType
-    {
-        NOW_PLAYING, POPULAR, TOP_RATED
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,40 +15,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setTag(TabType.NOW_PLAYING).setText("Now Playing"));
-        tabLayout.addTab(tabLayout.newTab().setTag(TabType.POPULAR).setText("Popular"));
-        tabLayout.addTab(tabLayout.newTab().setTag(TabType.TOP_RATED).setText("Top Rated"));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-        final ViewPager viewPager= (ViewPager)findViewById(R.id.pager);
-        final TabedClass tabAdapter = new TabedClass(getSupportFragmentManager(), tabLayout.getTabCount());
-
-       viewPager.setAdapter(tabAdapter);
-
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-
-
-
-
-        }
+           }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -79,11 +37,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        // TODO Auto-generated method stub
-        super.onConfigurationChanged(newConfig);
     }
 }
