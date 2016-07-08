@@ -36,23 +36,54 @@ public class MoviesFragment extends Fragment {
     private GridView gridView;
     private GridViewMovieAdapter gridImageAdapter;
     private TextView loadTextView;
+    private String STRING_QUERY="popular";
+    static final String STATE_STRING = "stringUser";
 
     private ArrayList<MovieItem> movieGridData;
 
     public MoviesFragment() {
     }
 
-    private void updateMovie() {
-        FetchMovieTask fetchMovieTask = new FetchMovieTask();
-        fetchMovieTask.execute("popular");   //"top_rated" ir "popular"
+    public void setStringQuery(String stringQuery) {
+        STRING_QUERY=stringQuery;
     }
 
-   
+    public String getStringQuery()
+    {
+        return STRING_QUERY;
+    }
+
+    private void updateMovie() {
+        FetchMovieTask fetchMovieTask = new FetchMovieTask();
+        fetchMovieTask.execute(STRING_QUERY);   //"top_rated" ir "popular"
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putString(STATE_STRING, STRING_QUERY);
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
+
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+        if (savedInstanceState != null) {
+            // Restore some state before we've even inflated our own layout
+            // This could be generic things like an ID that our Fragment represents
+            STRING_QUERY = savedInstanceState.getString(STATE_STRING);
+        }
+
+//        else
+
+
+
         gridView = (GridView) rootView.findViewById(R.id.gridview_movies);
 
         loadTextView=(TextView) rootView.findViewById(R.id.load_textView);
@@ -60,6 +91,7 @@ public class MoviesFragment extends Fragment {
         movieGridData = new ArrayList<>();
         gridImageAdapter = new GridViewMovieAdapter(getActivity(), R.layout.grid_list_item_movies, movieGridData);
         gridView.setAdapter(gridImageAdapter);
+
         updateMovie();
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -84,6 +116,16 @@ public class MoviesFragment extends Fragment {
         return rootView;
     }
 
+//    boolean moviesUpdated = false;
+//
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        if(moviesUpdated == false) {
+//            updateMovie();
+//            moviesUpdated = true;
+//        }
+//    }
 
     public class FetchMovieTask extends AsyncTask<String, Void, Boolean> {
         private final String LOG_TAG = FetchMovieTask.class.getSimpleName();
@@ -209,7 +251,7 @@ public class MoviesFragment extends Fragment {
             String mOverview = movieArray.getJSONObject(i).getString(OVERVIEW);
             movieItem.setMovieOverview(mOverview);
 
-            String mRelease_Date = movieArray.getJSONObject(i).getString(RELEASE_DATE);
+            String mRelease_Date = movieArray.getJSONObject(i).getString(RELEASE_DATE).split("-")[0];
             movieItem.setMovieRelease_Date(mRelease_Date);
 
             String mPoster_Path = "http://image.tmdb.org/t/p/w342" + movieArray.getJSONObject(i).getString(POSTER_PATH);
