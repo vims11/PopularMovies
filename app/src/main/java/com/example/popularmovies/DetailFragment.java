@@ -26,31 +26,33 @@ public class DetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView= inflater.inflate(R.layout.fragment_detail, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_detail, container, false);
 
         Intent intent = getActivity().getIntent();
-        fillValueText(rootView,intent,"title",R.id.title_Text);
-        fillValueText(rootView,intent,"releaseDate",R.id.release_text);
-        fillValueText(rootView,intent,"overview",R.id.overview_Text);
+        getActivity().setTitle(intent.getStringExtra("title"));
 
-        String imgPath=intent.getStringExtra("image");
-        imageView=(ImageView)rootView.findViewById(R.id.poster_Image);
+        fillValueText(rootView, intent, "title", R.id.title_Text);
+        fillValueText(rootView, intent, "releaseDate", R.id.release_text);
+        fillValueText(rootView, intent, "overview", R.id.overview_Text);
+
+        String imgPath = intent.getStringExtra("image");
+        imageView = (ImageView) rootView.findViewById(R.id.poster_Image);
         Picasso.with(getActivity()).load(imgPath).into(imageView);
 
-       String rating=intent.getStringExtra("rating");
-        mRatingBar=(RatingBar)rootView.findViewById(R.id.rating);
+        String rating = intent.getStringExtra("rating");
+        mRatingBar = (RatingBar) rootView.findViewById(R.id.rating);
         mRatingBar.setRating(Float.valueOf(rating));
 
 
         return rootView;
     }
 
-    private void fillValueText(View rootView,Intent intent,String extra,int rId)
-    {
+    private void fillValueText(View rootView, Intent intent, String extra, int rId) {
         if (intent != null && intent.hasExtra(extra)) {
             String extraVariable = intent.getStringExtra(extra);
             ((TextView) rootView.findViewById(rId))
                     .setText(extraVariable);
         }
     }
+
 }
