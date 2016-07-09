@@ -65,6 +65,11 @@ public class MoviesFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
+        if(STRING_QUERY=="popular")
+            getActivity().setTitle("Popular Movies");
+        else
+            getActivity().setTitle("Top Rated Movies");
+
         gridView = (GridView) rootView.findViewById(R.id.gridview_movies);
 
         loadTextView=(TextView) rootView.findViewById(R.id.load_textView);
